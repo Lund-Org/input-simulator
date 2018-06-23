@@ -1,0 +1,14 @@
+#Ignore all files except cpp and text-like files
+*.*
+
+!*.cpp
+!*.c
+!*.hpp
+!*.h
+
+!*.txt
+!*.md
+
+#And the file itself, it might be usefull to people running on
+#another IDE
+!.gitignore
