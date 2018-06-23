@@ -14,4 +14,7 @@ namespace inputsender {
 		return priv::WindowInfoImpl::isWindowVisible(window.m_windowImpl);
 	}
 
+  int WindowInfo::getId (Window window) {
+    return priv::WindowInfoImpl::getId(window.m_windowImpl);
+  }
 }

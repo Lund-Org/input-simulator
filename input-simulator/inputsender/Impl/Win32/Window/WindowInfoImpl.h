@@ -46,6 +46,15 @@ namespace inputsender { namespace priv {
 		 *\return True if the window is visible, false otherwise
 		 */
 		static bool isWindowVisible (WindowImpl window);
+
+    /**
+     *\brief Returns an unique id for the window
+     *
+     *\param [in] window The window we want the id of.
+     *
+     *\return The id of the window, 0 if no id can be provided.
+     */
+    static int getId (WindowImpl window);
 	};
 
 } }

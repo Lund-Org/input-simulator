@@ -30,4 +30,8 @@ namespace inputsender { namespace priv {
 	bool WindowInfoImpl::isWindowVisible (WindowImpl window) {
 		return IsWindowVisible(window.window);
 	}
+
+  int WindowInfoImpl::getId (WindowImpl window) {
+    return GetWindowThreadProcessId(window.window, NULL);
+  }
 } }
