@@ -9,6 +9,9 @@
 
 #endif
 
+
+namespace inputsender {
+
 /**
  *\brief Map a key to its corresponding keycode
  *
@@ -156,4 +159,6 @@ inline int getVSCode(const std::string& code)
   }
 
   return 0;
+}
+
 }
