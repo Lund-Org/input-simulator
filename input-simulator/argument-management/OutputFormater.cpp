@@ -40,7 +40,7 @@ void OutputFormater::output (const std::vector<inputsender::Window> windows)
       std::cout << "    ";
 #endif
 
-        std::cout << WINDOW_ID_JSON_OUTPUT_KEY << ":" << inputsender::WindowInfo::getId(windows[i]);
+        std::cout << WINDOW_ID_JSON_OUTPUT_KEY << ":" << inputsender::WindowInfo::getWindowId(windows[i]);
 
 #if defined(READABLE_JS)
       std::cout << "\n";

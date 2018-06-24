@@ -101,7 +101,7 @@ int ArgumentParser::parseInput (const std::string& inputs, std::vector<int>& key
 
   for(auto& ikey : inputs_keys) {
 
-    int key = inputsender::getVSCode(ikey);
+    int key = inputsender::geKeyCodeFromName(ikey);
 
     if(key != 0) {
       keys.emplace_back(key);

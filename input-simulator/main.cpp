@@ -59,6 +59,17 @@ int main(int argc, char** argv) {
         inputsender::InputSender::GlobalInput(KEY_LCONTROL, inputsender::KeyState::PRESS);
       }
 
+      if (args.isSystem) {
+        inputsender::InputSender::GlobalInput(KEY_SYS, inputsender::KeyState::PRESS);
+      }
+
+      if (args.isAlt) {
+        inputsender::InputSender::GlobalInput(KEY_ALT, inputsender::KeyState::PRESS);
+      }
+
+
+
+
       //TODO : System and ALT key
       
       if(args.isGlobal && args.keys.size() > 0) {
@@ -89,18 +100,15 @@ int main(int argc, char** argv) {
                    return true;
                  }
                  else {
-                   return args.windowId == inputsender::WindowInfo::getId(w);
+                   return args.windowId == inputsender::WindowInfo::getWindowId(w);
                  }                 
                }
 
                return false;
              }
 
-             //We already know that args.windowId is non null 
-             std::cout << "Args : " << args.windowId << std::endl;
-             std::cout << "Window : " << title << "/" << inputsender::WindowInfo::getId(w) << std::endl;
-
-             return args.windowId == inputsender::WindowInfo::getId(w);
+             //We already know that args.windowId is non null
+             return args.windowId == inputsender::WindowInfo::getWindowId(w);
            }
         );
 
@@ -121,6 +129,14 @@ int main(int argc, char** argv) {
 
       if(args.isControl) {
         inputsender::InputSender::GlobalInput(KEY_LCONTROL, inputsender::KeyState::RELEASE);
+      }
+
+      if (args.isSystem) {
+        inputsender::InputSender::GlobalInput(KEY_SYS, inputsender::KeyState::RELEASE);
+      }
+
+      if (args.isAlt) {
+        inputsender::InputSender::GlobalInput(KEY_ALT, inputsender::KeyState::RELEASE);
       }
     } 
     else {

@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <sstream>
+#include <iterator>
 #include <iostream>
 
 #include "Argument.h"
