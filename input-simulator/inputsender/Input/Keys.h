@@ -16,11 +16,8 @@ namespace inputsender {
 /**
  *\brief Map a key to its corresponding keycode
  *
- *The lenght of code can not exceed 3 characters.
- *If the lenght of code is 2 (or three) the function expect it to be one of F1 to F12 keys.
- *
- *Only letters and digit are handle for one character length code.
- *
+ *Only keys defined in KeysImpl are supported and will be
+ *translated properly.
  *In any other case, this function will return 0 as a NO-translation code.
  *
  *\param [in] code The key to convert
@@ -52,6 +49,16 @@ inline int geKeyCodeFromName (const std::string& code) {
     { "7", KEY_7 },
     { "8", KEY_8 },
     { "9", KEY_9 },
+    { "num0", KEY_NUMPAD0 },
+    { "num1", KEY_NUMPAD1 },
+    { "num2", KEY_NUMPAD2 },
+    { "num3", KEY_NUMPAD3 },
+    { "num4", KEY_NUMPAD4 },
+    { "num5", KEY_NUMPAD5 },
+    { "num6", KEY_NUMPAD6 },
+    { "num7", KEY_NUMPAD7 },
+    { "num8", KEY_NUMPAD8 },
+    { "num9", KEY_NUMPAD9 },
     { "a", KEY_A },
     { "b", KEY_B },
     { "c", KEY_C },
