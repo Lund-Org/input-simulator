@@ -62,11 +62,11 @@ namespace inputsender { namespace priv {
 
 	void InputSenderImpl::TargetInput (WindowImpl dest, int inputCode, KeyState state) {
 		if(state == KeyState::PRESS || state == KeyState::PRESS_RELEASE) {
-			PostMessage(dest.window, WM_KEYDOWN, inputCode, 0);
+      SendMessage(dest.window, WM_KEYDOWN, inputCode, 0);
 		}
 
 		if(state == KeyState::RELEASE || state == KeyState::PRESS_RELEASE) {
-			PostMessage(dest.window, WM_KEYUP, inputCode, 0);
+			SendMessage(dest.window, WM_KEYUP, inputCode, 0);
 		}
 	}
 
