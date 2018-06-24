@@ -24,7 +24,18 @@ namespace inputsender {
 #define KEY_7 0x37
 #define KEY_8 0x38
 #define KEY_9 0x39
-		
+
+#define KEY_NUMPAD0 VK_NUMPAD0 
+#define KEY_NUMPAD1 VK_NUMPAD1
+#define KEY_NUMPAD2 VK_NUMPAD2
+#define KEY_NUMPAD3 VK_NUMPAD3
+#define KEY_NUMPAD4 VK_NUMPAD4
+#define KEY_NUMPAD5 VK_NUMPAD5
+#define KEY_NUMPAD6 VK_NUMPAD6
+#define KEY_NUMPAD7 VK_NUMPAD7
+#define KEY_NUMPAD8 VK_NUMPAD8
+#define KEY_NUMPAD9 VK_NUMPAD9
+
 #define KEY_A 0x41
 #define KEY_B 0x42
 #define KEY_C 0x43
