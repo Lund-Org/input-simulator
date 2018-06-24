@@ -68,3 +68,5 @@ namespace inputsender {
 #define KEY_F12 VK_F12
 
 #define KEY_LCONTROL VK_LCONTROL
+#define KEY_ALT VK_LMENU
+#define KEY_SYS VK_LWIN

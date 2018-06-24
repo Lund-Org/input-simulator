@@ -59,6 +59,6 @@ namespace inputsender {
      *
      *\return The id of the window, 0 if no id can be provided.
      */
-    static int getId (Window window);
+    static int getWindowId (Window window);
   };
 }
