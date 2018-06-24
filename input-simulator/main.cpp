@@ -54,25 +54,20 @@ int main(int argc, char** argv) {
         return ARGUMENT_ERROR;
 
       }
-
-      if(args.isControl) {
-        inputsender::InputSender::GlobalInput(KEY_LCONTROL, inputsender::KeyState::PRESS);
-      }
-
-      if (args.isSystem) {
-        inputsender::InputSender::GlobalInput(KEY_SYS, inputsender::KeyState::PRESS);
-      }
-
-      if (args.isAlt) {
-        inputsender::InputSender::GlobalInput(KEY_ALT, inputsender::KeyState::PRESS);
-      }
-
-
-
-
-      //TODO : System and ALT key
-      
+ 
       if(args.isGlobal && args.keys.size() > 0) {
+        if (args.isControl) {
+          inputsender::InputSender::GlobalInput(KEY_LCONTROL, inputsender::KeyState::PRESS);
+        }
+
+        if (args.isSystem) {
+          inputsender::InputSender::GlobalInput(KEY_SYS, inputsender::KeyState::PRESS);
+        }
+
+        if (args.isAlt) {
+          inputsender::InputSender::GlobalInput(KEY_ALT, inputsender::KeyState::PRESS);
+        }
+
         inputsender::InputSender::GlobalInputs(&args.keys[0], args.keys.size(), inputsender::KeyState::PRESS);
         inputsender::InputSender::GlobalInputs(&args.keys[0], args.keys.size(), inputsender::KeyState::RELEASE);
       }
@@ -118,13 +113,26 @@ int main(int argc, char** argv) {
           std::cerr << "No window found" << std::endl;
           return WINDOW_NOT_FOUND;
         }
-        else if(args.keys.size() > 0) {
-          for(auto& w : wnds) {
-            inputsender::InputSender::TargetInputs(w, &args.keys[0], args.keys.size(), inputsender::KeyState::PRESS);
-            inputsender::InputSender::TargetInputs(w, &args.keys[0], args.keys.size(), inputsender::KeyState::RELEASE);
+        else {          
+          if (args.isControl) {
+            inputsender::InputSender::GlobalInput(KEY_LCONTROL, inputsender::KeyState::PRESS);
+          }
+
+          if (args.isSystem) {
+            inputsender::InputSender::GlobalInput(KEY_SYS, inputsender::KeyState::PRESS);
+          }
+
+          if (args.isAlt) {
+            inputsender::InputSender::GlobalInput(KEY_ALT, inputsender::KeyState::PRESS);
+          }
+
+          if (args.keys.size() > 0) {
+            for (auto& w : wnds) {
+              inputsender::InputSender::TargetInputs(w, &args.keys[0], args.keys.size(), inputsender::KeyState::PRESS);
+              inputsender::InputSender::TargetInputs(w, &args.keys[0], args.keys.size(), inputsender::KeyState::RELEASE);
+            }
           }
         }
-
       }
 
       if(args.isControl) {
@@ -155,6 +163,5 @@ int main(int argc, char** argv) {
     }
   }
 
-	std::cin.get();
 	return SUCCESS;
 }

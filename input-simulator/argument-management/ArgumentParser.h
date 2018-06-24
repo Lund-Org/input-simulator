@@ -12,7 +12,7 @@
 
 #define WINDOW_NAME "--windowName="
 #define WINDOW_ID "--windowId="
-#define INPUTS "--input"
+#define INPUTS "--input="
 #define CTRL "--ctrl"
 #define ALT "--alt"
 #define SYS "--system"

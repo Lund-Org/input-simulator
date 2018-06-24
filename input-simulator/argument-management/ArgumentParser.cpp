@@ -15,8 +15,8 @@ int ArgumentParser::parseArgument (int argc, char** argv, Argument& result) {
 
       if(name.size() >= 2) {
 
-        name.erase(name.begin());   //Remove "
-        name.erase(name.end() - 1); //Remove "
+        //name.erase(name.begin());   //Remove "
+        //name.erase(name.end() - 1); //Remove "
 
         result.windowName = name;
       }
@@ -47,8 +47,8 @@ int ArgumentParser::parseArgument (int argc, char** argv, Argument& result) {
 
       if(inputs.size() >= 2) {
 
-        inputs.erase(inputs.begin());   //Remove "
-        inputs.erase(inputs.end() - 1); //Remove "
+        //inputs.erase(inputs.begin());   //Remove "
+        //inputs.erase(inputs.end() - 1); //Remove "
         
         std::vector<int> keys;
         
