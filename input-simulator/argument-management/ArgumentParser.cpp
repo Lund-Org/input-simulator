@@ -2,7 +2,7 @@
 
 int ArgumentParser::parseArgument (int argc, char** argv, Argument& result) {
 
-  int return_v = NO_ERROR;
+  int return_v = NO_PARSE_ERROR;
 
   for(int i = 1; i < argc; ++i) {
   
@@ -92,7 +92,7 @@ int ArgumentParser::parseInput (const std::string& inputs, std::vector<int>& key
   int return_v = 1;
 
   //Splitting by backspace can be easily done with streams
-  std::istringstream iss(inputs);
+  std::istringstream iss(inputs + " ");
   std::vector<std::string> inputs_keys;
 
   std::copy(std::istream_iterator<std::string>(iss), 

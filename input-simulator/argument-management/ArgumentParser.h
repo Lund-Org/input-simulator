@@ -18,7 +18,7 @@
 #define GLOBAL "--global"
 
 //No error
-#define NO_ERROR 0x00
+#define NO_PARSE_ERROR 0x00
 
 //The user provided an input that is not supported (for instance --inputs="foo A B", 'foo' is not a supported input)
 #define UNKNOWN_INPUT 0x01
