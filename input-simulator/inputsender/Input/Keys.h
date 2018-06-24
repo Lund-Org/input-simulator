@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <string>
+#include <map>
 
 #if defined(_WIN32) || defined(__WIN32__) || defined(WIN32)
 
@@ -26,139 +27,70 @@ namespace inputsender {
  *
  *\return Either the keycode or 0 if there is no translation
  */
-inline int getVSCode(const std::string& code)
-{
-  if(code.size() > 3) {
-    return 0;
-  }
-  
-  std::string tcode = code;
+inline int geKeyCodeFromName (const std::string& code) {
 
+  const std::map<std::string, int> keycodes{
+    { "f1", KEY_F1 },
+    { "f2", KEY_F2 },
+    { "f3", KEY_F3 },
+    { "f4", KEY_F4 },
+    { "f5", KEY_F5 },
+    { "f6", KEY_F6 },
+    { "f7", KEY_F7 },
+    { "f8", KEY_F8 },
+    { "f9", KEY_F9 },
+    { "f10", KEY_F10 },
+    { "f11", KEY_F11 },
+    { "f12", KEY_F12 },
+    { "0", KEY_0 },
+    { "1", KEY_1 },
+    { "2", KEY_2 },
+    { "3", KEY_3 },
+    { "4", KEY_4 },
+    { "5", KEY_5 },
+    { "6", KEY_6 },
+    { "7", KEY_7 },
+    { "8", KEY_8 },
+    { "9", KEY_9 },
+    { "a", KEY_A },
+    { "b", KEY_B },
+    { "c", KEY_C },
+    { "d", KEY_D },
+    { "e", KEY_E },
+    { "f", KEY_F },
+    { "g", KEY_G },
+    { "h", KEY_H },
+    { "i", KEY_I },
+    { "j", KEY_J },
+    { "k", KEY_K },
+    { "l", KEY_L },
+    { "m", KEY_M },
+    { "n", KEY_N },
+    { "o", KEY_O },
+    { "p", KEY_P },
+    { "q", KEY_Q },
+    { "r", KEY_R },
+    { "s", KEY_S },
+    { "t", KEY_T },
+    { "u", KEY_U },
+    { "v", KEY_V },
+    { "w", KEY_W },
+    { "x", KEY_X },
+    { "y", KEY_Y },
+    { "z", KEY_Z },
+  };
+
+  std::string tcode{ code };
   std::transform(code.begin(), code.end(), tcode.begin(), ::tolower);
 
-  if (tcode.find("f") == 0 && code.size() >= 2) {
-    tcode = tcode.substr(1);
-
-    try {
-      int fcode = std::stoi(tcode);
-
-      switch (fcode)
-      {
-      case 1:
-        return KEY_F1;
-      case 2:
-        return KEY_F2;
-      case 3:
-        return KEY_F3;
-      case 4:
-        return KEY_F4;
-      case 5:
-        return KEY_F5;
-      case 6:
-        return KEY_F6;
-      case 7:
-        return KEY_F7;
-      case 8:
-        return KEY_F8;
-      case 9:
-        return KEY_F9;
-      case 10:
-        return KEY_F10;
-      case 11:
-        return KEY_F11;
-      case 12:
-        return KEY_F12;
-      default:
-        return 0;
-      }
-    }
-    catch(std::exception e) {
-      return 0;
-    }
-  }
-
-  if(tcode.size() == 1)
+  if (keycodes.find(tcode) != keycodes.end())
   {
-    switch (tcode[0])
-    {
-    case '0':
-      return KEY_0;
-    case '1':
-      return KEY_1;
-    case '2':
-      return KEY_2;
-    case '3':
-      return KEY_3;
-    case '4':
-      return KEY_4;
-    case '5':
-      return KEY_5;
-    case '6':
-      return KEY_6;
-    case '7':
-      return KEY_7;
-    case '8':
-      return KEY_8;
-    case '9':
-      return KEY_9;
-    case 'a':
-      return KEY_A;
-    case 'b':
-      return KEY_B;
-    case 'c':
-      return KEY_C;
-    case 'd':
-      return KEY_D;
-    case 'e':
-      return KEY_E;
-    case 'f':
-      return KEY_F;
-    case 'g':
-      return KEY_G;
-    case 'h':
-      return KEY_H;
-    case 'i':
-      return KEY_I;
-    case 'j':
-      return KEY_J;
-    case 'k':
-      return KEY_K;
-    case 'l':
-      return KEY_L;
-    case 'm':
-      return KEY_M;
-    case 'n':
-      return KEY_N;
-    case 'o':
-      return KEY_O;
-    case 'p':
-      return KEY_P;
-    case 'q':
-      return KEY_Q;
-    case 'r':
-      return KEY_R;
-    case 's':
-      return KEY_S;
-    case 't':
-      return KEY_T;
-    case 'u':
-      return KEY_U;
-    case 'v':
-      return KEY_V;
-    case 'w':
-      return KEY_W;
-    case 'x':
-      return KEY_X;
-    case 'y':
-      return KEY_Y;
-    case 'z':
-      return KEY_Z;
-    default:
-      return 0;
-    }
+    return keycodes.at(tcode);
   }
 
   return 0;
 }
+
+
 
 }
