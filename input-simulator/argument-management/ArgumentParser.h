@@ -17,6 +17,20 @@
 #define SYS "--system"
 #define GLOBAL "--global"
 
+//No error
+#define NO_ERROR 0x00
+
+//The user provided an input that is not supported (for instance --inputs="foo A B", 'foo' is not a supported input)
+#define UNKNOWN_INPUT 0x01
+//The user provided an argument that is not supported (for instance --foo)
+#define UNKNOWN_ARGUMENT 0x02
+//The window name can't be parsed properly (ie not surrounde with '"')
+#define MALFORMATED_WINDOW_NAME 0x04
+//The windowId is not a number (or can't be parsed as a base 10 integer)
+#define MALFORMATED_WINDOW_ID 0x08
+//The inputs can't be parsed properly (ie not surrounded with '"')
+#define MALFORMATED_INPUTS 0x10
+
 class ArgumentParser {
 
 public:
@@ -30,7 +44,7 @@ public:
    *\param [in] argv An array of string
    *\param [out] result The result of the parsing
    *
-   *\return 1 if the argument were successfully parse, 0 otherwise
+   *\return 0 if no error were found, a bitwise combinaison of UNKNOWN_INPUT, UNKNOWN_ARGUMENT, MALFORMATED_WINDOW_NAME and MALFORMATED_INPUTS otherwise
    */
   static int parseArgument (int argc, char** argv, Argument& result);
   

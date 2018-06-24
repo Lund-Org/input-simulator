@@ -2,7 +2,7 @@
 
 int ArgumentParser::parseArgument (int argc, char** argv, Argument& result) {
 
-  int return_v = 1;
+  int return_v = NO_ERROR;
 
   for(int i = 1; i < argc; ++i) {
   
@@ -22,7 +22,7 @@ int ArgumentParser::parseArgument (int argc, char** argv, Argument& result) {
       }
       else {
         std::cerr << "Invalid argument: " << arg << std::endl;
-        return_v = 0;
+        return_v |= MALFORMATED_WINDOW_NAME;
       }
     }
     else if(arg.find(WINDOW_ID) == 0) {
@@ -37,7 +37,7 @@ int ArgumentParser::parseArgument (int argc, char** argv, Argument& result) {
         std::cerr << "Error while parsing : \"" << arg << "\", extracted : \"" << stringId << "\"" << std::endl;
         std::cerr << e.what() << std::endl;
 
-        return_v = 0;
+        return_v |= MALFORMATED_WINDOW_ID;
       }
 
     }
@@ -54,14 +54,14 @@ int ArgumentParser::parseArgument (int argc, char** argv, Argument& result) {
         
         if(!parseInput(inputs, keys)) {
           std::cerr << "Some inputs are not valids: " << inputs << std::endl;
-          return_v = 1;
+          return_v |= UNKNOWN_INPUT;
         }
         
         result.keys = keys;
       }
       else {
         std::cerr << "Invalid argument: " << arg << std::endl;
-        return_v = 0;
+        return_v |= MALFORMATED_INPUTS;
       }
     }
     else if(arg.find(CTRL) == 0) {
@@ -80,7 +80,7 @@ int ArgumentParser::parseArgument (int argc, char** argv, Argument& result) {
 
       std::cerr << "Unknown argument: " << arg << std::endl;
 
-      return_v = 0;
+      return_v |= UNKNOWN_ARGUMENT;
     }
   }
 
